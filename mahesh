@@ -1,0 +1,40 @@
+pipeline {
+     agent any
+     parameters {
+        string(name: 'BRANCH', description: 'Enter the branch to build', defaultValue: '')
+                }
+       environment {
+	    GIT_REPO = 'https://github.com/VEshwar2102/myassignment.git'
+    }
+       stages {
+                   stage('TESTING1') {
+                      steps {
+                       script {
+                          if(env.BRANCH == 'master') 
+                        {						  
+                          sh 'echo "This is a TESTING1 stage"'
+                          sh 'sleep 2'
+			}
+			else {
+		        error("Build failed")
+                             }
+                     }
+                  }
+		 }
+		       stage('TESTING2') {
+                            steps {
+                                 script {
+				    if(env.BRANCH == 'master') 
+                                 {						  
+                                      sh 'echo "This is a TESTING2 stage"'
+                                      sh 'sleep 2'
+				  }
+				 else {
+				error("Build failed ")
+                       }
+                       
+			  }
+                        }
+                }
+           }     
+        }
