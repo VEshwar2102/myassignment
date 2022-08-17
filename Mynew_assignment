@@ -8,7 +8,7 @@ pipeline {
                    stage('TEST_STAGING1') {
                       steps {
                        script {
-                          if(env.BRANCH == 'origin/master')
+                          if(env.BRANCH == 'master')
                         {
                           sh 'echo "This is a TEST_STAGING1'
                           sh 'sleep 2'
@@ -22,17 +22,17 @@ pipeline {
                        stage('TEST_STAGING2') {
                             steps {
                                  script {
-                                    if(env.BRANCH == 'origin/master')
+                                    if(env.BRANCH == 'master')
                                  {
                                       sh 'echo "This is a TEST_STAGING1'
                                       sh 'sleep 2'
                                   }
-                                 else {
+                                 else 
+                                 {
                                 error("Build failed ")
-                       }
-
+                                 }
                           }
-                        }
+                      }
                 }
            }
         }
