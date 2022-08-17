@@ -1,0 +1,38 @@
+pipeline {
+     agent any
+       environment {
+        BRANCH = "$GIT_BRANCH"
+            GIT_REPO = 'https://github.com/VEshwar2102/myassignment.git'
+    }
+       stages {
+                   stage('TEST_STAGING1') {
+                      steps {
+                       script {
+                          if(env.BRANCH == 'master')
+                        {
+                          sh 'echo "This is a TEST_STAGING1'
+                          sh 'sleep 2'
+                        }
+                        else {
+                        error("Build failed")
+                             }
+                     }
+                  }
+                 }
+                       stage('TEST_STAGING2') {
+                            steps {
+                                 script {
+                                    if(env.BRANCH == 'master')
+                                 {
+                                      sh 'echo "This is a TEST_STAGING1'
+                                      sh 'sleep 2'
+                                  }
+                                 else {
+                                error("Build failed ")
+                       }
+
+                          }
+                        }
+                }
+           }
+        }
